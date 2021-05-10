@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+</head>
+
+<body>
+    <div id="contenedor">
+        <img id="pok" src="klipartz.com.png">
+
+    </div>
+
+</body>
+<style>
+    img {
+        width: 80px;
+        display: inline-block;
+        vertical-align: top;
+    }
+    
+    #pok {
+        width: 400px;
+        margin: auto;
+        display: block;
+    }
+    
+    #contenedor {
+        background-color: #D03D46;
+    }
+    
+    .contenedor-pokemon {
+        width: 80px;
+        display: inline-block;
+        vertical-align: top;
+    }
+</style>
+<script>
+    $(document).ready(function() {
+        for (var j = 1; j <= 150; j++) {
+            $.get("https://pokeapi.co/api/v2/pokemon/" + j + "/", function(res) {
+                var html_str = "<div id='" + res.id + "' class='contenedor-pokemon'><img src='" + res.sprites.front_default + "'></div>";
+                $("#contenedor").append(html_str);
+                console.log(res);
+            }, "json");
+        }
+    });
+</script>
